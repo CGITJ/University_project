@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <style>
+        .el-header{
+            background-color: #545c64;
+        }
+    </style>
+</head>
+<body>
+<div id="div">
+    <el-container>
+        <!-- 头部-->
+        <el-header class="el-header">
+            <el-container>
+                <div>
+                    <el-image src="img/stj.ico" style="width: 20px;margin-top: 10px;"></el-image>
+                </div>
+                <el-menu
+                        mode="horizontal"
+                        background-color="#545c64"
+                        text-color="white"
+                        active-text-color="#ffd04b"
+                        style="margin-left: auto;">
+                    <el-menu-item index="1">处理中心</el-menu-item>
+                    <el-submenu index="2">
+                        <template slot="title">我的工作台</template>
+                        <el-menu-item index="2-1" @click="one">选项1</el-menu-item>
+                        <el-menu-item index="2-2" @click="two">选项2</el-menu-item>
+                        <el-menu-item index="2-3" @click="three">选项3</el-menu-item>
+                    </el-submenu>
+                    <el-menu-item index="3"><a href="列表.html" target="_self">首页</a></el-menu-item>
+                </el-menu>
+            </el-container>
+        </el-header>
+
+        <!-- 中间部分 -->
+        <el-container style="height: 680px; border: 1px solid #eee">
+            <!-- 侧边栏 -->
+            <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+                <el-menu :default-openeds="['1']">
+                    <el-submenu index="1">
+                        <template slot="title"><i class="el-icon-menu"></i>信息管理</template>
+                        <el-menu-item-group>
+                            <el-menu-item index="1-1" @click="findAll"><i class="el-icon-help"></i>学生信息管理</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="2">
+                        <template slot="title"><i class="el-icon-menu"></i>咨询</template>
+                        <el-menu-item-group>
+                            <el-menu-item index="2-1" @click="saylove"><i class="el-icon-help"></i>联系方式</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                </el-menu>
+            </el-aside>
+
+            <el-container>
+                <!-- 主区域部分 -->
+                <el-main>
+                    <iframe :src="iframeSrc"  style="top:80px;left: 120px; width: 100%;height:620px"></iframe>
+                </el-main>
+            </el-container>
+        </el-container>
+    </el-container>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#div",
+        data: {
+            iframeSrc: "manager.html"
+        },
+        methods:{
+            findAll:function () {
+                this.iframeSrc = "stuList.html"
+            },
+            saylove:function (){
+                alert("+vx:15200436506\n+qq:1820291307")
+            },
+            one:function (){
+                location.href = "https://codeforces.com/";
+            },
+            two:function (){
+                location.href = "https://mvnrepository.com/";
+            },
+            three:function (){
+                location.href = "https://stackoverflow.com/";
+            }
+        }
+    });
+</script>
+</html>
